@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Create Blog
+</button>
+<!-- Modal -->
+@using (Ajax.BeginForm("SaveBlog", "Home", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "frmEmp" }))
+{
+
+    <div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Create New Blog</h4>
+                    </div>
+                    <div class="modal-body" id="frmEmp">
+                        @Html.Partial("_Blog")
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="Submit" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
